@@ -1,15 +1,17 @@
 package com.demoqa;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.demoqa.utils.RandomUtils;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Test;
 import com.demoqa.pages.RegistrationPage;
 
 public class RegistrationFormTest extends TestBase {
-
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void fullRegistration() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         registrationPage.openPage();
         registrationPage.typeFirstName(TestData.firstName);
         registrationPage.typeLastName(TestData.lastName);
